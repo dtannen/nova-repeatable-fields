@@ -20,6 +20,7 @@
                 v-for="(subField, index) in field.sub_fields"
                 :is="`${subField.type}-sub-field`"
                 :key="index"
+                :index="getIndex()"
                 :sub-field="subField"
                 v-model="value[subField.name]"
                 class="row-input"
@@ -35,6 +36,7 @@
     import NumberSubField from '../sub-fields/NumberSubField.vue';
     import SelectSubField from '../sub-fields/SelectSubField.vue';
     import TextareaSubField from '../sub-fields/TextareaSubField.vue';
+    import HiddenSubField from '../sub-fields/HiddenSubField.vue';
 
     export default {
 
@@ -44,6 +46,7 @@
             NumberSubField,
             SelectSubField,
             TextareaSubField,
+            HiddenSubField
         },
 
         props: ['value', 'field', 'index'],
@@ -59,6 +62,9 @@
         methods:{
             deleteRow(){
                 this.$emit('delete-row', this.index);
+            },
+            getIndex() {
+                return this.index
             },
             getInputLayout(subField){
 
