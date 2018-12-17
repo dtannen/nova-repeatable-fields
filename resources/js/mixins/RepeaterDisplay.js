@@ -30,13 +30,22 @@ export default{
         },
         rows() {
             return this.value.map(row => {
-                let keys = Object.keys(row);
+                let keys = Object.keys(row).filter(key => {
+                  let subField = this.field.sub_fields.find(field => field.name === key);
+                  if (subField.type == 'hidden') {
+                    return false;
+                  }
+                  return true;
+                });
 
                 return keys.map(key => {
                     let subField = this.field.sub_fields.find(field => field.name === key);
                     let value = (['select'].some(type => type === subField.type))
                         ? subField.options[row[key]]
                         : row[key];
+                    if (value == 'Other' && row['other']) {
+                        value = row['other'];
+                    }
                     return {
                         label: subField.label,
                         value: value
