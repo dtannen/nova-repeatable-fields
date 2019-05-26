@@ -5,8 +5,8 @@
             <li v-for="row in rows">
                 <ul class="list-reset mb-4">
                     <li class="flex items-top mb-1" v-for="subRow in row">
-                        <span class="block w-1/6 mr-2">{{ subRow.label }}:</span>
-                        <span class="block"><strong>{{ subRow.value }}</strong></span>
+                        <span class="block w-1/6 mr-3">{{ subRow.label }}:</span>
+                        <span class="block w-1/6 ml-8"><strong>{{ subRow.value }}</strong></span>
                     </li>
                 </ul>
             </li>
