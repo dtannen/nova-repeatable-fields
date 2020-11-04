@@ -4,6 +4,7 @@
             :id="subField.name"
             :name="subField.name"
             type="number"
+            step=".01"
             class="w-full form-control form-input form-input-bordered"
             :value="value"
             v-bind="subField.attributes"
